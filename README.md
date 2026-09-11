@@ -1,44 +1,58 @@
-# Energy Price Intelligence Master Framework ⚡
+# Energy Price Intelligence
 
-Este proyecto es un sistema integral de **Machine Learning** desarrollado en **R** para la predicción y el análisis estratégico del mercado eléctrico español. Utiliza datos históricos de generación de energía y clima de 5 ciudades principales de España (Kaggle).
+Proyecto de Machine Learning desarrollado en R para analizar y predecir el comportamiento del mercado eléctrico en España.
 
-## 🚀 Características Principales
+El proyecto utiliza datos históricos de generación de energía y variables climáticas de cinco ciudades principales de España obtenidos de Kaggle. La idea es combinar información temporal y geográfica para generar predicciones que puedan servir como apoyo para el análisis y la toma de decisiones.
 
-*   **IA de Mercado (96.4% precisión)**: Modelo Lasso L1 que utiliza memoria temporal (lags) y factores geoclimáticos.
-*   **IA de Consumo Personalizada**: Modelo Random Forest dinámico que aprende los hábitos del usuario a partir de su historial.
-*   **Dashboard Estratégico**: Aplicación web interactiva (Shiny) para proyecciones financieras a 24 meses y simulaciones de shocks climáticos.
-*   **Auditoría de Confianza**: Herramienta de validación real comparando predicciones contra el histórico real.
-*   **Reportes Senior Automáticos**: Generación de informes profesionales en Word y activos visuales para presentaciones.
+## ¿Qué incluye el proyecto?
 
-## 📂 Estructura del Proyecto
+### Predicción del precio de energía
 
-*   `src/`: Scripts de entrenamiento, aplicaciones web y generadores de reportes.
-    *   `train_final_v2.R`: Corazón del modelado ML.
-    *   `app_geo.R`: Dashboard de simulación financiera.
-    *   `app_validation.R`: Validador de precisión IA.
-*   `models/`: Almacena el cerebro entrenado (`lasso_geo_model.rds`).
-*   `data/`: Datasets originales de energía y clima.
-*   `data_test/`: Datasets para pruebas ciegas y simulación de historial.
-*   `presentation/`: Colección de 16 gráficos maestros e informes finales.
+Se desarrolló un modelo Lasso (L1) que utiliza información histórica del mercado mediante variables temporales (lags) y factores relacionados con el clima y la ubicación geográfica.
 
-## 🛠️ Instalación y Uso
+El modelo alcanzó una precisión aproximada del 96.4% en las pruebas realizadas.
 
-1.  Asegúrate de tener **R** y **RStudio** instalados.
-2.  Clona este repositorio:
-    ```bash
-    git clone https://github.com/dubi2007/proyecto_r.git
-    ```
-3.  Instala las dependencias necesarias en R:
-    ```R
-    install.packages(c("shiny", "ggplot2", "dplyr", "glmnet", "randomForest", "plotly", "bslib", "officer", "tidyr", "lubridate", "DT"))
-    ```
-4.  Ejecuta la aplicación principal:
-    ```R
-    shiny::runApp('src/app_geo.R')
-    ```
+### Predicción del consumo personal
 
-## 📊 Resultados Técnicos
-El sistema ha demostrado una estabilidad excepcional, logrando un **MAE de 1.93€** y manteniendo la precisión en datos futuros (Backtesting 2018), lo que garantiza un aprendizaje estructural del mercado energético.
+También se implementó un modelo Random Forest orientado a aprender los patrones de consumo de un usuario a partir de su propio historial.
 
----
-*Desarrollado por un Senior Data Analyst para toma de decisiones estratégicas.*
+La idea es que el modelo pueda adaptarse progresivamente a los hábitos de consumo en lugar de utilizar únicamente un patrón general.
+
+### Dashboard interactivo
+
+El proyecto cuenta con una aplicación desarrollada con Shiny que permite visualizar las predicciones y analizar diferentes escenarios.
+
+Entre sus funciones se encuentran:
+
+* Proyecciones financieras de hasta 24 meses.
+* Visualización de tendencias del mercado.
+* Análisis de variables climáticas.
+* Simulación de posibles cambios o shocks climáticos.
+* Comparación de diferentes escenarios.
+
+### Validación de las predicciones
+
+Se desarrolló una aplicación independiente para comparar las predicciones del modelo con los valores históricos reales.
+
+Esto permite comprobar cómo se comporta el modelo frente a datos que no utilizó directamente durante el entrenamiento.
+
+### Generación de reportes
+
+El proyecto también incluye scripts para generar reportes en Word y gráficos que pueden utilizarse en presentaciones o análisis.
+
+## Estructura del proyecto
+
+```text
+proyecto_r/
+│
+├── src/
+│   ├── train_final_v2.R      # Entrenamiento del modelo
+│   ├── app_geo.R             # Dashboard principal
+│   └── app_validation.R      # Validación de predicciones
+│
+├── models/
+│   └── lasso_geo_model.rds   # Modelo entrenado
+│
+├── data/
+│   └── ...                   # Datos d
+```
